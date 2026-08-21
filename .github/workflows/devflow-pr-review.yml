@@ -58,7 +58,7 @@ jobs:
 
       - name: Check review command
         id: check
-        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             const isReviewCommand = require('./.github/scripts/review_command.js');
@@ -135,7 +135,7 @@ jobs:
 
       - name: Check review requester team membership
         id: check
-        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         env:
           MEMBERSHIP_USER: ${{ github.event_name == 'issue_comment' && github.event.comment.user.login || '' }}
           TEAM_NAME: ${{ secrets.DEVELOPER_TEAM }}
@@ -161,7 +161,7 @@ jobs:
 
       - name: React to authorized review command
         if: ${{ github.event_name == 'issue_comment' && steps.check.outputs.is_team_member == 'true' }}
-        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           github-token: ${{ steps.github-auth.outputs.token }}
           script: |
